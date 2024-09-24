@@ -1,14 +1,51 @@
-Characteristic,16-24 years old,25-34 years old,35-44 years old,45-54 years old,55-64 years old,65 years and older
-Shooter,63%,59.1%,52.9%,41.5%,30.7%,6.5%
-Action adventure,57.9%,54.4%,49.8%,40.3%,29.4%,7.7%
-MOBA,40.6%,40.8%,35.3%,25%,18.9%,N/A
-Sports,40.4%,41.6%,37.9%,30.1%,22.8%,6.9%
-Simulation,38.9%,36.7%,31.9%,27%,22.5%,6.7%
-Battle royale,38.2%,N/A,N/A,N/A,N/A,N/A
-Racing,36.3%,38.4%,35.7%,28.8%,21.6%,4.4%
-Strategy,34.3%,35.1%,33.2%,25.8%,20%,4.4%
-Puzzle platform,32.9%,34.7%,35.2%,32.3%,29%,20.1%
-Fighting,31.7%,32.6%,30.4%,22.6%,N/A,N/A
-Action platform,N/A,N/A,31.5%,24.5%,17.3%,5.7%
-Online board games,N/A,N/A,N/A,N/A,19.2%,11.7%
-Action RPG,N/A,N/A,33.2%,N/A,N/A,N/A
+Region,Percentage
+Philippines,97.1
+Indonesia,95.9
+India,94.2
+Saudi Arabia,94
+Thailand,93.2
+UAE,93
+Vietnam,92.7
+South Africa,92.2
+Egypt,91.9
+Mexico,90.6
+Turkey,90.2
+Taiwan,90.1
+Malaysia,90
+Brazil,89.1
+Hungary,88.4
+Greece,87.5
+France,86.1
+Bulgaria,85.8
+Argentina,85.4
+Colombia,85.3
+Portugal,85.3
+Israel,84.9
+Chile,84.6
+Italy,84.2
+Worldwide,83.6
+Spain,83.5
+Croatia,83.2
+New Zealand,83.1
+South Korea,83
+Norway,82.8
+Romania,82.8
+Australia,81.9
+United States,81.5
+Singapore,81.2
+Russia,80.6
+Denmark,80.5
+Poland,80.4
+Sweden,80
+Hong Kong,79.6
+Netherlands,79.2
+Switzerland,78.8
+Germany,78.7
+Ireland,78
+Canada,77.1
+Czechia,75.5
+Belgium,73.9
+China,73.8
+Austria,73.2
+United Kingdom,71.1
+Japan,67.8
