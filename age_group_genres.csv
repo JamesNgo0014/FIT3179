@@ -1,14 +1,68 @@
-Genre,16-24 years old,25-34 years old,35-44 years old,45-54 years old,55-64 years old,65 years and older
-Shooter,63%,59.10%,52.90%,41.50%,30.70%,6.50%
-Action adventure,57.90%,54.40%,49.80%,40.30%,29.40%,7.70%
-MOBA,40.60%,40.80%,35.30%,25%,18.90%,N/A
-Sports,40.40%,41.60%,37.90%,30.10%,22.80%,6.90%
-Simulation,38.90%,36.70%,31.90%,27%,22.50%,6.70%
-Battle royale,38.20%,N/A,N/A,N/A,N/A,N/A
-Racing,36.30%,38.40%,35.70%,28.80%,21.60%,4.40%
-Strategy,34.30%,35.10%,33.20%,25.80%,20%,4.40%
-Puzzle platform,32.90%,34.70%,35.20%,32.30%,29%,20.10%
-Fighting,31.70%,32.60%,30.40%,22.60%,N/A,N/A
-Action platform,N/A,N/A,31.50%,24.50%,17.30%,5.70%
-Online board games,N/A,N/A,N/A,N/A,19.20%,11.70%
-Action RPG,N/A,N/A,33.20%,N/A,N/A,N/A
+Genre,AgeGroup,Percentage
+Shooter,16-24,63
+Shooter,25-34,59.1
+Shooter,35-44,52.9
+Shooter,45-54,41.5
+Shooter,55-64,30.7
+Shooter,65+,6.5
+Action Adventure,16-24,57.9
+Action Adventure,25-34,54.4
+Action Adventure,35-44,49.8
+Action Adventure,45-54,40.3
+Action Adventure,55-64,29.4
+Action Adventure,65+,7.7
+MOBA,16-24,40.6
+MOBA,25-34,40.8
+MOBA,35-44,35.3
+MOBA,45-54,25
+MOBA,55-64,18.9
+MOBA,65+,N/A
+Sports,16-24,40.4
+Sports,25-34,41.6
+Sports,35-44,37.9
+Sports,45-54,30.1
+Sports,55-64,22.8
+Sports,65+,6.9
+Simulation,16-24,38.9
+Simulation,25-34,36.7
+Simulation,35-44,31.9
+Simulation,45-54,27
+Simulation,55-64,22.5
+Simulation,65+,6.7
+Battle Royale,16-24,38.2
+Battle Royale,25-34,N/A
+Battle Royale,35-44,N/A
+Battle Royale,45-54,N/A
+Battle Royale,55-64,N/A
+Battle Royale,65+,N/A
+Racing,16-24,36.3
+Racing,25-34,38.4
+Racing,35-44,35.7
+Racing,45-54,28.8
+Racing,55-64,21.6
+Racing,65+,4.4
+Strategy,16-24,34.3
+Strategy,25-34,35.1
+Strategy,35-44,33.2
+Strategy,45-54,25.8
+Strategy,55-64,20
+Strategy,65+,4.4
+Puzzle Platform,16-24,32.9
+Puzzle Platform,25-34,34.7
+Puzzle Platform,35-44,35.2
+Puzzle Platform,45-54,32.3
+Puzzle Platform,55-64,29
+Puzzle Platform,65+,20.1
+Fighting,16-24,31.7
+Fighting,25-34,32.6
+Fighting,35-44,30.4
+Fighting,45-54,22.6
+Fighting,55-64,N/A
+Fighting,65+,N/A
+Action Platform,35-44,31.5
+Action Platform,45-54,24.5
+Action Platform,55-64,17.3
+Action Platform,65+,5.7
+Online Board Games,55-64,19.2
+Online Board Games,65+,11.7
+Action RPG,35-44,33.2
