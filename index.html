@@ -1,24 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Video Game Popularity Among Internet Users (Q1 2024)</title>
+  <title>Games Around The Globe</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px #000000;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #vis,
+    #bar-chart,
+    #pie-chart {
+      width: 100%;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 20px auto;
+    }
+
+    #vis>div,
+    #bar-chart>div,
+    #pie-chart>div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      #vis,
+      #bar-chart,
+      #pie-chart {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <h1 style="font-family: 'Courier New', Courier, monospace; color: #000000; text-shadow: 3px 3px #aaaaaa;">What Type Of
+    Game to Start As A Developer</h1>
+  <p
+    style="font-family: Arial, sans-serif; font-size: 1.2rem; color: #333333; text-align: center; line-height: 1.6; max-width: 1800px; margin: 20px auto;">
+    Designed to help aspiring game developers decide what type of game to start developing based on popular trends and
+    audience engagement. By analyzing different game genres, peak player counts, and demographic preferences, this page
+    provides insights into the types of games that resonate most with various audiences. Whether you are new to game
+    development or looking for inspiration, this page will guide you towards making informed decisions about your first
+    game project.
+  </p>
   <div id="vis"></div>
+  <!-- <div style="display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; margin-top: 20px;"> -->
+  <div style="max-width: 800px; margin-right: 0px; margin-bottom: 40px;">
+    <p
+      style="font-family: Arial, sans-serif; font-size: 1.1rem; color: #333333; text-align: justify; line-height: 1.6;">
+      The global map visualization showcases that game popularity is not evenly distributed across regions. Countries
+      with higher levels of internet access and gaming culture, such as North America and Western Europe, show
+      significantly higher percentages of game popularity. Developing regions, such as parts of Africa and South Asia,
+      have comparatively lower percentages, potentially due to barriers like internet availability and cultural
+      differences.
+      <br><br>
+      Developers targeting new audiences should consider these regional differences when deciding which types of games
+      to localize or promote in specific areas. Accessibility and infrastructure support should also be taken into
+      account.
+    </p>
+  </div>
+  <div id="bar-chart"></div>
+  <div style="max-width: 800px; margin-right: 0px; margin-bottom: 40px;">
+    <p
+      style="font-family: Arial, sans-serif; font-size: 1.1rem; color: #333333; text-align: justify; line-height: 1.6;">
+      The bar chart highlights the all-time peak player counts for popular games. It is evident that online multiplayer
+      and battle royale games have a massive appeal, with "PUBG: BATTLEGROUNDS" topping the list. The inclusion of games
+      like "Counter-Strike 2" and "Dota 2" reflects a significant interest in both competitive and collaborative
+      multiplayer experiences.
+      <br><br>
+      Developers looking to capture a large player base should focus on creating engaging, competitive online
+      experiences, possibly incorporating multiplayer elements that promote replayability and community growth.
+    </p>
+  </div>
+  <div id="pie-chart"></div>
+  <div style="max-width: 800px; margin-right: 0px; margin-bottom: 40px;">
+    <p
+      style="font-family: Arial, sans-serif; font-size: 1.1rem; color: #333333; text-align: justify; line-height: 1.6;">
+      The pie chart shows the distribution of indie game developers by country, focusing on those countries with at
+      least five developers. The United States stands out as having the most significant number of indie game
+      developers, making up a large proportion of the total. Countries like Canada, the United Kingdom, Sweden, and the
+      Czech Republic also have notable indie game developer communities. This distribution suggests that regions with
+      robust game development industries and support systems foster larger indie game communities.
+      <br><br>
+      For aspiring developers, being aware of these regional concentrations can be helpful, as these countries may offer
+      more resources, networking opportunities, and industry events that can support independent game development.
+    </p>
+  </div>
   <script type="text/javascript">
-    const spec = {
+    const pieChartSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Global Video Game Popularity Among Internet Users (Q1 2024)",
+      "title": "Distribution of Indie Game Developers by Country",
       "width": 800,
       "height": 500,
-      "config": {
-        "background": "#a6cee3"  // Light blue ocean color
+      "data": {
+        "values": [
+          { "Country": "United States", "Count": 77 },
+          { "Country": "Canada", "Count": 16 },
+          { "Country": "United Kingdom", "Count": 13 },
+          { "Country": "Sweden", "Count": 13 },
+          { "Country": "Czech Republic", "Count": 12 },
+          { "Country": "United Kingdom (England)", "Count": 10 },
+          { "Country": "Japan", "Count": 5 }
+        ]
       },
+      "mark": "arc",
+      "encoding": {
+        "theta": {
+          "field": "Count",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Country",
+          "type": "nominal",
+          "legend": { "title": "Country" }
+        },
+        "tooltip": [
+          { "field": "Country", "type": "nominal", "title": "Country" },
+          { "field": "Count", "type": "quantitative", "title": "Number of Developers" }
+        ]
+      }
+    };
+
+    const mapSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": { "text": "Global Video Game Popularity Among Internet Users (Q1 2024)", "color": "#ffffff", "fontSize": 16 },
+      "width": 1200,
+      "height": 600,
+      "config": { "background": "#000000" },
       "data": {
         "url": "https://raw.githubusercontent.com/JamesNgo0014/FIT3179/refs/heads/main/ne_110m.json",  // Your TopoJSON file
         "format": {
@@ -27,23 +169,23 @@
         }
       },
       "projection": {
-        "type": "equalEarth",
-        "scale": 160,  // Adjust to fit map scale better
+        "type": "mercator",
+        "scale": 150,  // Adjust to fit map scale better
         "center": [0, 20]  // Centering the map better
       },
       "layer": [
-        // Graticule layer
+        // Original Graticule layer
         {
           "mark": {
             "type": "geoshape",
-            "stroke": "#dddddd",  // Light grey for graticule
+            "stroke": "#666666",  // Light grey for graticule
             "strokeWidth": 1
           },
           "data": {
-            "graticule": {"step": [30, 30]}  // 30-degree graticule
+            "graticule": { "step": [30, 30] }  // 30-degree graticule
           }
         },
-        // Country layer with data
+        // Original Country layer with data
         {
           "transform": [
             {
@@ -51,14 +193,24 @@
               "from": {
                 "data": {
                   "url": "https://raw.githubusercontent.com/JamesNgo0014/FIT3179/refs/heads/main/raw.csv",  // Your CSV file
-                  "format": {"type": "csv"}
+                  "format": { "type": "csv" }
                 },
                 "key": "Region",  // CSV key for country names
                 "fields": ["Percentage"]
-              }
+              },
+              "default": 0
+            },
+            // Manually add data for Central African Republic and Democratic Republic of the Congo
+            {
+              "calculate": "datum['properties.NAME'] === 'Central African Republic' ? 70 : datum['Percentage']",
+              "as": "Percentage"
+            },
+            {
+              "calculate": "datum['properties.NAME'] === 'Democratic Republic of the Congo' ? 65 : datum['Percentage']",
+              "as": "Percentage"
             }
           ],
-          "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
+          "mark": { "type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1 },  // White outline for countries
           "encoding": {
             "color": {
               "field": "Percentage",
@@ -66,20 +218,286 @@
               "scale": {
                 "type": "threshold",
                 "domain": [60, 80, 90, 100],
-                "range": ["#f7fbff", "#c6dbef", "#6baed6", "#2171b5"]  // Updated colors from ColorBrewer (sequential blues)
+                "range": ["#fff7bc", "#fec44f", "#fe9929", "#cc4c02"]  // Updated colors from ColorBrewer (sequential blues)
               },
-              "title": "Game Popularity (%)"
+              "title": "Game Popularity by Percentage",
+              "legend": {
+                "title": "Popularity (%)",
+                "orient": "right",
+                "labelColor": "#ffffff",
+                "titleColor": "#ffffff"
+              }
             },
             "tooltip": [
-              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Percentage", "type": "quantitative", "title": "Game Popularity (%)"}
+              { "field": "properties.NAME", "type": "nominal", "title": "Country" },
+              { "field": "Percentage", "type": "quantitative", "title": "Game Popularity by Percentage" }
+            ]
+          }
+        },
+        // New layer for "No Value"
+        {
+          "transform": [
+            {
+              "lookup": "properties.NAME",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/JamesNgo0014/FIT3179/refs/heads/main/raw.csv",  // Your CSV file
+                  "format": { "type": "csv" }
+                },
+                "key": "Region",  // CSV key for country names
+                "fields": ["Percentage"]
+              },
+              "default": "No Value"
+            },
+            // Convert 0 values to "No Value"
+            {
+              "calculate": "datum['Percentage'] === 0 ? 'No Value' : datum['Percentage']",
+              "as": "Percentage"
+            }
+          ],
+          "mark": { "type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1 },  // White outline for countries
+          "encoding": {
+            "color": {
+              "field": "Percentage",
+              "type": "nominal",
+              "scale": {
+                "domain": ["No Value"],
+                "range": ["#808080"]  // Gray for "No Value" and updated colors
+              },
+              "title": "Game Popularity by Percentage",
+              "legend": {
+                "title": "Popularity (%)",
+                "orient": "right",
+                "labelColor": "#ffffff",
+                "titleColor": "#ffffff"
+              }
+            },
+            "tooltip": [
+              { "field": "properties.NAME", "type": "nominal", "title": "Country" },
+              { "field": "Percentage", "type": "nominal", "title": "Game Popularity by Percentage" }
             ]
           }
         }
       ]
     };
 
-    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+    const barChartSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "All-Time Peak Player Counts for Popular Video Games",
+      "width": 800,
+      "height": 500,
+      "data": {
+        "values": [
+          { "Name": "PUBG: BATTLEGROUNDS", "Peak": 3257248, "URL": "https://pubg.com" },
+          { "Name": "Black Myth: Wukong", "Peak": 2415714, "URL": "https://blackmythgame.com" },
+          { "Name": "Palworld", "Peak": 2101867, "URL": "https://palworldgame.com" },
+          { "Name": "Counter-Strike 2", "Peak": 1818773, "URL": "https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" },
+          { "Name": "Lost Ark", "Peak": 1325305, "URL": "https://www.playlostark.com" },
+          { "Name": "Dota 2", "Peak": 1295114, "URL": "https://www.dota2.com" },
+          { "Name": "Cyberpunk 2077", "Peak": 1054388, "URL": "https://www.cyberpunk.net" },
+          { "Name": "ELDEN RING", "Peak": 953426, "URL": "https://en.bandainamcoent.eu/elden-ring/elden-ring" },
+          { "Name": "Banana", "Peak": 917272, "URL": "https://example.com/banana-game" },  // Placeholder
+          { "Name": "New World", "Peak": 913634, "URL": "https://www.newworld.com" },
+          { "Name": "Hogwarts Legacy", "Peak": 879308, "URL": "https://www.hogwartslegacy.com" },
+          { "Name": "Baldur's Gate 3", "Peak": 875343, "URL": "https://baldursgate3.game" },
+          { "Name": "Goose Goose Duck", "Peak": 702845, "URL": "https://ggd.game" },
+          { "Name": "Apex Legends", "Peak": 624473, "URL": "https://www.ea.com/games/apex-legends" },
+          { "Name": "Valheim", "Peak": 502387, "URL": "https://www.valheimgame.com" },
+          { "Name": "Call of Duty", "Peak": 491670, "URL": "https://www.callofduty.com" },
+          { "Name": "Terraria", "Peak": 489886, "URL": "https://terraria.org" },
+          { "Name": "Capcom Arcade Stadium", "Peak": 488791, "URL": "https://www.capcom-arcade-stadium.com" },
+          { "Name": "Fallout 4", "Peak": 472962, "URL": "https://fallout.bethesda.net" },
+          { "Name": "Life Is Strange 2", "Peak": 468717, "URL": "https://lifeisstrange.square-enix-games.com" },
+          { "Name": "Capcom Arcade 2nd Stadium", "Peak": 463928, "URL": "https://www.capcom-arcade-stadium.com/2nd/" },
+          { "Name": "HELLDIVERS 2", "Peak": 458709, "URL": "https://www.playstation.com/en-us/games/helldivers-2/" },
+          { "Name": "Among Us", "Peak": 447476, "URL": "https://www.innersloth.com/gameAmongUs.php" },
+          { "Name": "Sons Of The Forest", "Peak": 414257, "URL": "https://sonsoftheforest.net" },
+          { "Name": "POSTAL", "Peak": 412063, "URL": "https://runningwithscissors.com/game/postal/" }  // Example URL
+        ]
+      },
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Peak",
+          "type": "quantitative",
+          "title": "All-Time Peak Player Count"
+        },
+        "y": {
+          "field": "Name",
+          "type": "nominal",
+          "sort": "-x",
+          "title": "Game"
+        },
+        "href": {
+          "field": "URL",
+          "type": "nominal"
+        },
+        "tooltip": [
+          { "field": "Name", "type": "nominal", "title": "Game" },
+          { "field": "Peak", "type": "quantitative", "title": "Peak Player Count" },
+          { "value": "Click here to go to the game's website", "title": "Note" }
+        ]
+
+      }
+    };
+
+
+    vegaEmbed("#vis", mapSpec, { mode: "vega-lite", defaultStyle: true }).then(console.log).catch(console.warn);
+    vegaEmbed("#bar-chart", barChartSpec, { mode: "vega-lite", defaultStyle: true }).then(console.log).catch(console.warn);
+    vegaEmbed("#pie-chart", pieChartSpec, { mode: "vega-lite", defaultStyle: true }).then(console.log).catch(console.warn);
   </script>
+  <style>
+    #age-group-chart {
+      width: 100%;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 20px auto;
+    }
+
+    @media (max-width: 768px) {
+      #age-group-chart {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+  </style>
+
+  <div id="age-group-chart" style="display: flex; justify-content: center;"></div>
+  <script type="text/javascript">
+    const ageGroupChartSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "Video Game Genre Popularity by Age Group",
+      "width": 800,
+      "height": 500,
+      "data": {
+        "values": [
+          { "Genre": "Shooter", "AgeGroup": "16-24", "Percentage": 63 },
+          { "Genre": "Shooter", "AgeGroup": "25-34", "Percentage": 59.1 },
+          { "Genre": "Shooter", "AgeGroup": "35-44", "Percentage": 52.9 },
+          { "Genre": "Shooter", "AgeGroup": "45-54", "Percentage": 41.5 },
+          { "Genre": "Shooter", "AgeGroup": "55-64", "Percentage": 30.7 },
+          { "Genre": "Shooter", "AgeGroup": "65+", "Percentage": 6.5 },
+          { "Genre": "Action Adventure", "AgeGroup": "16-24", "Percentage": 57.9 },
+          { "Genre": "Action Adventure", "AgeGroup": "25-34", "Percentage": 54.4 },
+          { "Genre": "Action Adventure", "AgeGroup": "35-44", "Percentage": 49.8 },
+          { "Genre": "Action Adventure", "AgeGroup": "45-54", "Percentage": 40.3 },
+          { "Genre": "Action Adventure", "AgeGroup": "55-64", "Percentage": 29.4 },
+          { "Genre": "Action Adventure", "AgeGroup": "65+", "Percentage": 7.7 },
+          { "Genre": "MOBA", "AgeGroup": "16-24", "Percentage": 40.6 },
+          { "Genre": "MOBA", "AgeGroup": "25-34", "Percentage": 40.8 },
+          { "Genre": "MOBA", "AgeGroup": "35-44", "Percentage": 35.3 },
+          { "Genre": "MOBA", "AgeGroup": "45-54", "Percentage": 25 },
+          { "Genre": "MOBA", "AgeGroup": "55-64", "Percentage": 18.9 },
+          { "Genre": "Sports", "AgeGroup": "16-24", "Percentage": 40.4 },
+          { "Genre": "Sports", "AgeGroup": "25-34", "Percentage": 41.6 },
+          { "Genre": "Sports", "AgeGroup": "35-44", "Percentage": 37.9 },
+          { "Genre": "Sports", "AgeGroup": "45-54", "Percentage": 30.1 },
+          { "Genre": "Sports", "AgeGroup": "55-64", "Percentage": 22.8 },
+          { "Genre": "Sports", "AgeGroup": "65+", "Percentage": 6.9 },
+          { "Genre": "Simulation", "AgeGroup": "16-24", "Percentage": 38.9 },
+          { "Genre": "Simulation", "AgeGroup": "25-34", "Percentage": 36.7 },
+          { "Genre": "Simulation", "AgeGroup": "35-44", "Percentage": 31.9 },
+          { "Genre": "Simulation", "AgeGroup": "45-54", "Percentage": 27 },
+          { "Genre": "Simulation", "AgeGroup": "55-64", "Percentage": 22.5 },
+          { "Genre": "Simulation", "AgeGroup": "65+", "Percentage": 6.7 },
+          { "Genre": "Battle Royale", "AgeGroup": "16-24", "Percentage": 38.2 },
+          { "Genre": "Racing", "AgeGroup": "16-24", "Percentage": 36.3 },
+          { "Genre": "Racing", "AgeGroup": "25-34", "Percentage": 38.4 },
+          { "Genre": "Racing", "AgeGroup": "35-44", "Percentage": 35.7 },
+          { "Genre": "Racing", "AgeGroup": "45-54", "Percentage": 28.8 },
+          { "Genre": "Racing", "AgeGroup": "55-64", "Percentage": 21.6 },
+          { "Genre": "Racing", "AgeGroup": "65+", "Percentage": 4.4 },
+          { "Genre": "Strategy", "AgeGroup": "16-24", "Percentage": 34.3 },
+          { "Genre": "Strategy", "AgeGroup": "25-34", "Percentage": 35.1 },
+          { "Genre": "Strategy", "AgeGroup": "35-44", "Percentage": 33.2 },
+          { "Genre": "Strategy", "AgeGroup": "45-54", "Percentage": 25.8 },
+          { "Genre": "Strategy", "AgeGroup": "55-64", "Percentage": 20 },
+          { "Genre": "Strategy", "AgeGroup": "65+", "Percentage": 4.4 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "16-24", "Percentage": 32.9 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "25-34", "Percentage": 34.7 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "35-44", "Percentage": 35.2 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "45-54", "Percentage": 32.3 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "55-64", "Percentage": 29 },
+          { "Genre": "Puzzle Platform", "AgeGroup": "65+", "Percentage": 20.1 },
+          { "Genre": "Fighting", "AgeGroup": "16-24", "Percentage": 31.7 },
+          { "Genre": "Fighting", "AgeGroup": "25-34", "Percentage": 32.6 },
+          { "Genre": "Fighting", "AgeGroup": "35-44", "Percentage": 30.4 },
+          { "Genre": "Fighting", "AgeGroup": "45-54", "Percentage": 22.6 },
+          { "Genre": "Action Platform", "AgeGroup": "35-44", "Percentage": 31.5 },
+          { "Genre": "Action Platform", "AgeGroup": "45-54", "Percentage": 24.5 },
+          { "Genre": "Action Platform", "AgeGroup": "55-64", "Percentage": 17.3 },
+          { "Genre": "Action Platform", "AgeGroup": "65+", "Percentage": 5.7 },
+          { "Genre": "Online Board Games", "AgeGroup": "55-64", "Percentage": 19.2 },
+          { "Genre": "Online Board Games", "AgeGroup": "65+", "Percentage": 11.7 },
+          { "Genre": "Action RPG", "AgeGroup": "35-44", "Percentage": 33.2 }
+        ]
+      },
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "AgeGroup",
+          "type": "nominal",
+          "title": "Age Group",
+          "axis": { "labelAngle": 0 }
+        },
+        "y": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "title": "Popularity (%)"
+        },
+        "color": {
+          "field": "Genre",
+          "type": "nominal",
+          "title": "Game Genre"
+        },
+        "tooltip": [
+          { "field": "Genre", "type": "nominal", "title": "Genre" },
+          { "field": "AgeGroup", "type": "nominal", "title": "Age Group" },
+          { "field": "Percentage", "type": "quantitative", "title": "Popularity (%)" }
+        ]
+      }
+    };
+
+    vegaEmbed("#age-group-chart", ageGroupChartSpec, { mode: "vega-lite", defaultStyle: true }).then(console.log).catch(console.warn);
+  </script>
+
+  <div style="display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; margin-top: 20px;">
+    <div style="max-width: 800px; margin-right: 150px; margin-bottom: 40px;">
+      <p
+        style="font-family: Arial, sans-serif; font-size: 1.1rem; color: #333333; text-align: justify; line-height: 1.6;">
+        The chart shows that video game popularity is highest among younger audiences (16-44). These groups have the
+        highest
+        engagement, with Action Adventure, Sports, and Shooter genres being popular. Younger players also enjoy a
+        diverse range
+        of gaming experiences.
+        <br><br>
+        Comparing to that, for older groups (55-64 and 65+), there is a significant decline in popularity. The 55-64
+        group
+        retains some interest, while the 65+ group prefers casual genres like Puzzle Platform and Online Board Games,
+        favoring
+        accessibility and slower-paced games.
+        <br><br>
+        This clearly indicates that video game popularity declines with age. Younger players (16-44) have the highest
+        engagement
+        across various genres, while older groups prefer less intense, strategic games.
+      </p>
+      <h3>Developers should focus on action-packed games for younger audiences and strategy games for older players.
+      </h3>
+    </div>
+    <div id="fact-card"
+      style="width: 350px; padding: 30px; background-color: #f7f7f7; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); border-radius: 12px; text-align: center;">
+      <h2 style="font-family: Arial, sans-serif; font-size: 1.8rem; color: #222222; margin-bottom: 15px;">Did You
+        Know?</h2>
+      <p style="font-family: Arial, sans-serif; font-size: 1.2rem; color: #666666;">
+        On average, a video gamer is 34 years old and owns a house.
+      </p>
+    </div>
+  </div>
+
+
 </body>
+
 </html>
